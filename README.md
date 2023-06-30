@@ -35,4 +35,4 @@ For more details on using the Laravel Security Scanner and interpreting the scan
 Contributions, bug reports, and feature requests are welcome! If you encounter any issues or have ideas to enhance the package, please open an issue or submit a pull request on GitHub.
 
 ## License
-This package is open-source and released under the MIT License. Feel free to use and modify it according to your project's requirements.
+This package is open-source and released under the MIT License.
