@@ -1,5 +1,6 @@
 {
     "name": "nextgenthing/laravel-security-scanner",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Nextgenthing\\LaravelSecurityScanner\\": "src/"
