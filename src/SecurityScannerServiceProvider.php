@@ -2,6 +2,7 @@
 namespace Nextgenthing\LaravelSecurityScanner;
 
 use Illuminate\Support\ServiceProvider;
+use Nextgenthing\LaravelSecurityScanner\Console\Commands\SecurityScanCommand;
 
 class SecurityScannerServiceProvider extends ServiceProvider
 {
@@ -12,8 +13,15 @@ class SecurityScannerServiceProvider extends ServiceProvider
         });
     }
 
-    public function boot()
+    /**
+     * Bootstrap any package services.
+     */
+    public function boot(): void
     {
-        // Publish any configuration files or assets if needed
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                SecurityScanCommand::class,
+            ]);
+        }
     }
 }

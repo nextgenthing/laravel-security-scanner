@@ -1,3 +1,4 @@
+<?php
 namespace Nextgenthing\LaravelSecurityScanner\Console\Commands;
 
 use Illuminate\Console\Command;
