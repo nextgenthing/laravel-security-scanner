@@ -1,17 +1,17 @@
 {
-    "name": "your/package",
+    "name": "nextgenthing/laravel-security-scanner",
     "autoload": {
         "psr-4": {
-            "YourNamespace\\": "src/"
+            "Nextgenthing\\LaravelSecurityScanner\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "YourNamespace\\SecurityScannerServiceProvider"
+                "Nextgenthing\\LaravelSecurityScanner\\SecurityScannerServiceProvider"
             ],
             "commands": [
-                "YourNamespace\\Console\\Commands\\SecurityScanCommand"
+                "Nextgenthing\\LaravelSecurityScanner\\Console\\Commands\\SecurityScanCommand"
             ]
         }
     }
