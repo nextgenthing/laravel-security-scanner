@@ -1,13 +1,22 @@
 {
     "name": "nextgenthing/laravel-security-scanner",
-    "license": "MIT",
-    "require-dev": {
-        "orchestra/testbench": "^8.5"
-    },
+    "description": "A powerful Laravel security scanner package for automated vulnerability detection.",
+    "keywords": [
+        "laravel",
+        "security",
+        "scanner",
+        "vulnerability",
+        "detection"
+    ],
+    "type": "library",
     "autoload": {
         "psr-4": {
             "Nextgenthing\\LaravelSecurityScanner\\": "src/"
         }
+    },
+    "require": {
+        "php": "^7.4",
+        "illuminate/support": "^8.0"
     },
     "extra": {
         "laravel": {
@@ -24,4 +33,5 @@
             "@php vendor/bin/testbench package:discover --ansi"
         ]
     }
+    "license": "MIT"
 }
