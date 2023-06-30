@@ -1,6 +1,9 @@
 {
     "name": "nextgenthing/laravel-security-scanner",
     "license": "MIT",
+    "require-dev": {
+        "orchestra/testbench": "^8.5"
+    },
     "autoload": {
         "psr-4": {
             "Nextgenthing\\LaravelSecurityScanner\\": "src/"
@@ -15,5 +18,10 @@
                 "Nextgenthing\\LaravelSecurityScanner\\Console\\Commands\\SecurityScanCommand"
             ]
         }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php vendor/bin/testbench package:discover --ansi"
+        ]
     }
 }
