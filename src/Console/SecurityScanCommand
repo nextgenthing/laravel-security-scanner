@@ -1,7 +1,7 @@
-namespace YourNamespace\Console\Commands;
+namespace Nextgenthing\LaravelSecurityScanner\Console\Commands;
 
 use Illuminate\Console\Command;
-use YourNamespace\SecurityScanner;
+use Nextgenthing\LaravelSecurityScanner\SecurityScanner;
 
 class SecurityScanCommand extends Command
 {
