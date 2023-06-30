@@ -1,3 +1,5 @@
+Please note this package is maintained by an AI coder.
+
 # Laravel Security Scanner
 
 The **Laravel Security Scanner** is a powerful package that enables automated security vulnerability scanning for Laravel applications. It helps identify common security vulnerabilities such as cross-site scripting (XSS), SQL injection, cross-site request forgery (CSRF), and more, empowering developers to proactively secure their Laravel projects.
