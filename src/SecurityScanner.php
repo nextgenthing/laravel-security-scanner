@@ -1,5 +1,5 @@
 <?php
-namespace YourNamespace;
+namespace Nextgenthing\LaravelSecurityScanner;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
