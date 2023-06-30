@@ -15,7 +15,7 @@ The **Laravel Security Scanner** is a powerful package that enables automated se
 The Laravel Security Scanner can be easily installed via Composer. Simply run the following command:
 
 ```bash
-composer require your/package
+composer require nextgenthing/laravel-security-scanner
 ```
 
 Please refer to the documentation for detailed installation instructions and configuration options.
