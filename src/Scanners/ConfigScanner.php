@@ -8,26 +8,28 @@ class ConfigScanner
 {
     public function scanConfiguration()
     {
-        // Implement your configuration vulnerability scanning logic here
-        // Examine the Laravel application's configuration for potential vulnerabilities
-        // You can check for insecure settings, sensitive information leakage, or any other configuration-related issues
-
-        // Example: Check if debug mode is enabled in production
-        if (Config::get('app.debug') === true && Config::get('app.env') === 'production') {
-            // Log or report the configuration vulnerability
+        if ($this->isDebugModeEnabledInProduction()) {
             $vulnerabilityDetails = [
                 'type' => 'Configuration',
-                'severity' => 'Low', // Adjust severity level based on your assessment
+                'severity' => 'Low',
                 'description' => 'Debug mode is enabled in production environment.'
             ];
 
             // Store the vulnerability details or generate a report
-            // Example: $this->storeVulnerability($vulnerabilityDetails);
-            // Example: $this->generateReport($vulnerabilityDetails);
+            $this->storeVulnerability($vulnerabilityDetails);
         }
-
-        // Additional configuration vulnerability checks can be added here
     }
 
-    // Additional methods and functionalities specific to Configuration scanning can be added here
+    private function isDebugModeEnabledInProduction()
+    {
+        // Implement the configuration vulnerability scanning logic here
+        // Check if debug mode is enabled in the production environment
+
+        return Config::get('app.debug') === true && Config::get('app.env') === 'production';
+    }
+
+    private function storeVulnerability($vulnerabilityDetails)
+    {
+        // Implement the storage or reporting logic for configuration vulnerabilities
+    }
 }
