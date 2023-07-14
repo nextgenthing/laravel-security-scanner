@@ -8,27 +8,30 @@ class AuthScanner
 {
     public function scanAuthentication()
     {
-        // Implement your authentication vulnerability scanning logic here
-        // Examine the authentication implementation for potential vulnerabilities
-        // You can check for insecure password hashing, weak credential requirements, or any other authentication-related issues
-
-        // Example: Check if the password hashing algorithm is weak
-        $hashedPassword = Auth::user()->password;
-        if (password_needs_rehash($hashedPassword, PASSWORD_BCRYPT)) {
-            // Log or report the authentication vulnerability
+        if ($this->isWeakPasswordHashingUsed()) {
             $vulnerabilityDetails = [
                 'type' => 'Authentication',
-                'severity' => 'Medium', // Adjust severity level based on your assessment
+                'severity' => 'Medium',
                 'description' => 'Weak password hashing algorithm detected.'
             ];
 
             // Store the vulnerability details or generate a report
-            // Example: $this->storeVulnerability($vulnerabilityDetails);
-            // Example: $this->generateReport($vulnerabilityDetails);
+            $this->storeVulnerability($vulnerabilityDetails);
         }
-
-        // Additional authentication vulnerability checks can be added here
     }
 
-    // Additional methods and functionalities specific to Authentication scanning can be added here
+    private function isWeakPasswordHashingUsed()
+    {
+        // Implement the authentication vulnerability scanning logic here
+        // Check if weak password hashing algorithms like MD5 or SHA1 are used
+
+        // Example: Check if the user's password is hashed using MD5
+        $hashedPassword = Auth::user()->password;
+        return strpos($hashedPassword, 'md5') !== false;
+    }
+
+    private function storeVulnerability($vulnerabilityDetails)
+    {
+        // Implement the storage or reporting logic for authentication vulnerabilities
+    }
 }
