@@ -15,7 +15,9 @@ class ConfigScanner
 
     private function checkDebugMode()
     {
-        if (config('app.debug')) {
+        $debugMode = Config::get('app.debug');
+
+        if ($debugMode) {
             $vulnerabilityDetails = [
                 'type' => 'Configuration',
                 'severity' => 'High', // Adjust severity level based on your assessment
@@ -29,18 +31,18 @@ class ConfigScanner
     private function checkSensitiveConfigurations()
     {
         $sensitiveConfigs = [
-            'mail.mailers.smtp.password',
-            'services.stripe.secret',
-            // Add other sensitive configuration keys to check
+            'app.key',
+            'database.connections.mysql.password',
+            // Add more sensitive configuration keys to check
         ];
 
         foreach ($sensitiveConfigs as $configKey) {
-            $configValue = config($configKey);
+            $configValue = Config::get($configKey);
 
             if ($configValue) {
                 $vulnerabilityDetails = [
                     'type' => 'Configuration',
-                    'severity' => 'Medium', // Adjust severity level based on your assessment
+                    'severity' => 'High', // Adjust severity level based on your assessment
                     'description' => "Sensitive configuration value detected: $configKey"
                 ];
 
