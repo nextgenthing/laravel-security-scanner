@@ -8,28 +8,49 @@ class ConfigScanner
 {
     public function scanConfiguration()
     {
-        if ($this->isDebugModeEnabledInProduction()) {
+        $this->checkDebugMode();
+        $this->checkSensitiveConfigurations();
+        // Add more configuration scanning methods as needed
+    }
+
+    private function checkDebugMode()
+    {
+        if (config('app.debug')) {
             $vulnerabilityDetails = [
                 'type' => 'Configuration',
-                'severity' => 'Low',
+                'severity' => 'High', // Adjust severity level based on your assessment
                 'description' => 'Debug mode is enabled in production environment.'
             ];
 
-            // Store the vulnerability details or generate a report
             $this->storeVulnerability($vulnerabilityDetails);
         }
     }
 
-    private function isDebugModeEnabledInProduction()
+    private function checkSensitiveConfigurations()
     {
-        // Implement the configuration vulnerability scanning logic here
-        // Check if debug mode is enabled in the production environment
+        $sensitiveConfigs = [
+            'mail.mailers.smtp.password',
+            'services.stripe.secret',
+            // Add other sensitive configuration keys to check
+        ];
 
-        return Config::get('app.debug') === true && Config::get('app.env') === 'production';
+        foreach ($sensitiveConfigs as $configKey) {
+            $configValue = config($configKey);
+
+            if ($configValue) {
+                $vulnerabilityDetails = [
+                    'type' => 'Configuration',
+                    'severity' => 'Medium', // Adjust severity level based on your assessment
+                    'description' => "Sensitive configuration value detected: $configKey"
+                ];
+
+                $this->storeVulnerability($vulnerabilityDetails);
+            }
+        }
     }
 
     private function storeVulnerability($vulnerabilityDetails)
     {
-        // Implement the storage or reporting logic for configuration vulnerabilities
+        // Implement the logic to store or report the detected vulnerability
     }
 }
