@@ -10,18 +10,16 @@ class CsrfScanner
     public function scanRequest(Request $request)
     {
         if ($this->isCsrfTokenRequired($request) && !$this->isCsrfTokenValid($request)) {
-            // Log or report the CSRF vulnerability
             $vulnerabilityDetails = [
                 'type' => 'CSRF',
                 'url' => $request->url(),
                 'method' => $request->method(),
-                'severity' => 'High', // Adjust severity level based on your assessment
+                'severity' => 'High',
                 'description' => 'CSRF token validation failed.'
             ];
 
             // Store the vulnerability details or generate a report
-            // Example: $this->storeVulnerability($vulnerabilityDetails);
-            // Example: $this->generateReport($vulnerabilityDetails);
+            $this->storeVulnerability($vulnerabilityDetails);
         }
     }
 
@@ -36,5 +34,8 @@ class CsrfScanner
         return Session::token() === $token;
     }
 
-    // Additional methods and functionalities specific to CSRF scanning can be added here
+    private function storeVulnerability($vulnerabilityDetails)
+    {
+        // Implement the storage or reporting logic for CSRF vulnerabilities
+    }
 }
